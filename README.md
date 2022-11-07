@@ -1,1 +1,1 @@
-# flutter_ecommerce
+# ecommerce app
