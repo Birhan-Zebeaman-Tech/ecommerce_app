@@ -1,6 +1,7 @@
 import 'package:ecommerce_app/bloc/bloc.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 
 import 'package:ecommerce_app/screens/screens.dart';
 
@@ -12,6 +13,12 @@ class BottomNav extends StatefulWidget {
 }
 
 class _BottomNavState extends State<BottomNav> {
+    late AppLocalizations _local;
+  @override
+  void didChangeDependencies() {
+    _local = AppLocalizations.of(context);
+    super.didChangeDependencies();
+  }
   @override
   Widget build(BuildContext context) {
     return BlocBuilder<BottomNavCubit, BottomNavState>(
@@ -19,15 +26,15 @@ class _BottomNavState extends State<BottomNav> {
         return Scaffold(
           body: callPage(state.bottomNavIndex),
           bottomNavigationBar: BottomNavigationBar(
-          items: const [
+          items:  [
             BottomNavigationBarItem(
-                icon: Icon(Icons.home_outlined), label: 'Home'),
+                icon: const Icon(Icons.home_outlined), label: _local.home),
             BottomNavigationBarItem(
-                icon: Icon(Icons.shop_outlined), label: 'Brand'),
+                icon: const Icon(Icons.shop_outlined), label: _local.brand),
             BottomNavigationBarItem(
-                icon: Icon(Icons.shopping_cart_outlined), label: 'Cart'),
+                icon: const Icon(Icons.shopping_cart_outlined), label: _local.cart),
             BottomNavigationBarItem(
-                icon: Icon(Icons.person_outlined), label: 'Account'),
+                icon: const Icon(Icons.person_outlined), label: _local.account),
           ],
           type: BottomNavigationBarType.fixed,
           selectedItemColor: Colors.blueAccent,
